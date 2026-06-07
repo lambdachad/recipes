@@ -2,6 +2,7 @@
 
 rm -rf docs
 mkdir -p docs
+cp recipes/*.jpg docs/
 
 for recipe in recipes/*.cook; do
     name=$(basename "${recipe%.cook}")
