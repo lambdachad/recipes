@@ -1,0 +1,15 @@
+eggs:
+    item: Eggs
+    url: https://www.carrefouregypt.com/mafegy/en/white-eggs/royal-white-eggs-30-pcs/p/659534
+    price: 109.99
+    quantity: 30
+    unit: egg
+    price_per_unit: 3.67
+
+butter:
+    item: Butter
+    url: https://www.carrefouregypt.com/mafegy/en/mixed-butter/fern-mixed-butter-1k/p/195679
+    price: 158.99
+    quantity: 1000
+    unit: g
+    price_per_unit: 0.15899
