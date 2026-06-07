@@ -4,7 +4,6 @@ eggs:
     price: 109.99
     quantity: 30
     unit: egg
-    price_per_unit: 3.67
 
 butter:
     item: Butter
@@ -12,4 +11,3 @@ butter:
     price: 158.99
     quantity: 1000
     unit: g
-    price_per_unit: 0.15899

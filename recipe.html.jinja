@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ metadata.title }}</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --fg: #2c2420;
+      --fg-dim: #8a7e76;
+      --bg: #fdf9f4;
+      --card: #fff;
+      --line: #ebe6df;
+      --accent: #b5543a;
+    }
+
+    body {
+      font: 400 17px/1.7 Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    article {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    header { margin-bottom: 40px; }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.75px;
+      margin-bottom: 28px;
+    }
+
+    header img {
+      display: block;
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--fg-dim);
+      margin: 48px 0 16px;
+    }
+
+    /* ── ingredients ── */
+    .ingredients {
+      list-style: none;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 4px 0;
+    }
+
+    .ingredients li {
+      display: flex;
+      align-items: baseline;
+      padding: 6px 20px;
+      gap: 8px;
+    }
+
+    .ingredients li + li {
+      border-top: 1px solid var(--line);
+    }
+
+    .name { flex: 1; }
+
+    .qty {
+      color: var(--fg-dim);
+      font-size: 15px;
+      text-align: right;
+      min-width: 48px;
+    }
+
+    .cost {
+      color: var(--fg-dim);
+      font-size: 15px;
+      text-align: right;
+      min-width: 80px;
+    }
+
+
+
+    .total {
+      font-weight: 700;
+      border-top: 2px solid var(--accent) !important;
+    }
+
+    .total .cost { color: var(--fg); }
+
+    /* ── steps ── */
+    .steps {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 24px;
+      white-space: pre-line;
+      line-height: 1.7;
+      word-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+      article { padding: 32px 16px 64px; }
+      h1 { font-size: 28px; }
+      .ingredients li { padding: 5px 14px; }
+      .steps { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <header>
+      <h1>{{ metadata.title }}</h1>
+      {% if metadata.image %}<img src="{{ metadata.image }}" alt="{{ metadata.title }}">{% endif %}
+    </header>
+
+    <h2>Ingredients</h2>
+    {% set total = namespace(value=0) %}
+    <ul class="ingredients">
+      {%- for ingredient in ingredients if ingredient.quantity %}
+      {%- set info = db('ingredients.' ~ ingredient.name) %}
+      {%- set name = info.item | default(ingredient.name | title) %}
+      {%- if info.price and info.quantity %}
+      {%- set cost = (ingredient.quantity.value | float) * (info.price | float) / (info.quantity | float) %}
+      {%- set total.value = total.value + cost %}
+      <li><span class="name">{{ name }}</span><span class="qty">{{ ingredient.quantity }}</span><span class="cost">EGP {{ cost | round | int }}</span></li>
+      {%- endif %}
+      {%- endfor %}
+      {%- for ingredient in ingredients if ingredient.quantity %}
+      {%- set info = db('ingredients.' ~ ingredient.name) %}
+      {%- set name = info.item | default(ingredient.name | title) %}
+      {%- if not (info.price and info.quantity) %}
+      <li><span class="name">{{ name }}</span><span class="qty">{{ ingredient.quantity }}</span></li>
+      {%- endif %}
+      {%- endfor %}
+      {%- for ingredient in ingredients if not ingredient.quantity %}
+      <li class="no-qty"><span class="name">{{ ingredient.name | title }}</span></li>
+      {%- endfor %}
+      <li class="total"><span class="name">Total</span><span class="cost">EGP {{ total.value | round | int }}</span></li>
+    </ul>
+
+    <h2>Steps</h2>
+    <div class="steps">
+      {%- for section in sections %}{{ section | replace("= " ~ metadata.title, "") | replace("= Recipe", "") | replace("\n\n", "\n") | trim }}{% endfor -%}
+    </div>
+  </article>
+</body>
+</html>

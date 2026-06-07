@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scrambled Eggs</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --fg: #2c2420;
+      --fg-dim: #8a7e76;
+      --bg: #fdf9f4;
+      --card: #fff;
+      --line: #ebe6df;
+      --accent: #b5543a;
+    }
+
+    body {
+      font: 400 17px/1.7 Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    article {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    header { margin-bottom: 40px; }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.75px;
+      margin-bottom: 28px;
+    }
+
+    header img {
+      display: block;
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--fg-dim);
+      margin: 48px 0 16px;
+    }
+
+    /* ── ingredients ── */
+    .ingredients {
+      list-style: none;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 4px 0;
+    }
+
+    .ingredients li {
+      display: flex;
+      align-items: baseline;
+      padding: 6px 20px;
+      gap: 8px;
+    }
+
+    .ingredients li + li {
+      border-top: 1px solid var(--line);
+    }
+
+    .name { flex: 1; }
+
+    .qty {
+      color: var(--fg-dim);
+      font-size: 15px;
+      text-align: right;
+      min-width: 48px;
+    }
+
+    .cost {
+      color: var(--fg-dim);
+      font-size: 15px;
+      text-align: right;
+      min-width: 80px;
+    }
+
+
+
+    .total {
+      font-weight: 700;
+      border-top: 2px solid var(--accent) !important;
+    }
+
+    .total .cost { color: var(--fg); }
+
+    /* ── steps ── */
+    .steps {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 24px;
+      white-space: pre-line;
+      line-height: 1.7;
+      word-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+      article { padding: 32px 16px 64px; }
+      h1 { font-size: 28px; }
+      .ingredients li { padding: 5px 14px; }
+      .steps { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Scrambled Eggs</h1>
+      <img src="https://imgs.search.brave.com/dvzU-UmihZM61yQQ2-qeEWtfH3YWjjgOcsjnfQPPMrs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90b3Jp/YXZleS5jb20vaW1h/Z2VzLzIwMTkvMDgv/SU1HXzk5MDQuanBl/Zw" alt="Scrambled Eggs">
+    </header>
+
+    <h2>Ingredients</h2>
+    
+    <ul class="ingredients">
+      <li><span class="name">Eggs</span><span class="qty">8</span><span class="cost">EGP 29</span></li>
+      <li><span class="name">Butter</span><span class="qty">15 g</span><span class="cost">EGP 2</span></li>
+      <li class="no-qty"><span class="name">Salt</span></li>
+      <li class="total"><span class="name">Total</span><span class="cost">EGP 32</span></li>
+    </ul>
+
+    <h2>Steps</h2>
+    <div class="steps">1. Crack 8 eggs into a bowl with salt.
+2. Melt 15 g butter in a pan over low heat.
+3. Add the eggs and stir gently until just set, about 5 minutes.</div>
+  </article>
+</body>
+</html>
