@@ -7,116 +7,34 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --fg: #2c2420;
-      --fg-dim: #8a7e76;
-      --bg: #fdf9f4;
-      --card: #fff;
-      --line: #ebe6df;
-      --accent: #b5543a;
-    }
-
     body {
       font: 400 17px/1.7 Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-      color: var(--fg);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
+      color: #222;
+      background: #fff;
     }
 
-    article {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 56px 24px 96px;
-    }
-
+    article { max-width: 640px; margin: 0 auto; padding: 56px 24px 96px; }
     header { margin-bottom: 40px; }
 
-    h1 {
-      font-size: 36px;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.75px;
-      margin-bottom: 28px;
-    }
+    h1 { font-size: 36px; font-weight: 700; line-height: 1.1; letter-spacing: -0.75px; margin-bottom: 28px; }
+    h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin: 48px 0 16px; }
 
-    header img {
-      display: block;
-      width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
+    header img { display: block; width: 100%; max-height: 420px; object-fit: cover; border-radius: 10px; }
 
-    h2 {
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--fg-dim);
-      margin: 48px 0 16px;
-    }
-
-    /* ── ingredients ── */
-    .ingredients {
-      list-style: none;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 4px 0;
-    }
-
-    .ingredients li {
-      display: flex;
-      align-items: baseline;
-      padding: 6px 20px;
-      gap: 8px;
-    }
-
-    .ingredients li + li {
-      border-top: 1px solid var(--line);
-    }
-
+    .ingredients { list-style: none; }
+    .ingredients li { display: flex; align-items: baseline; padding: 4px 0; gap: 8px; }
     .name { flex: 1; }
+    .link { font-size: 13px; margin-left: 4px; }
+    .qty, .cost { font-size: 15px; text-align: right; }
+    .qty { min-width: 48px; }
+    .cost { min-width: 80px; }
+    .total { font-weight: 700; margin-top: 4px; padding-top: 8px; border-top: 1px solid #ddd; }
 
-    .qty {
-      color: var(--fg-dim);
-      font-size: 15px;
-      text-align: right;
-      min-width: 48px;
-    }
-
-    .cost {
-      color: var(--fg-dim);
-      font-size: 15px;
-      text-align: right;
-      min-width: 80px;
-    }
-
-
-
-    .total {
-      font-weight: 700;
-      border-top: 2px solid var(--accent) !important;
-    }
-
-    .total .cost { color: var(--fg); }
-
-    /* ── steps ── */
-    .steps {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 20px 24px;
-      white-space: pre-line;
-      line-height: 1.7;
-      word-spacing: 0.5px;
-    }
+    .steps { white-space: pre-line; line-height: 1.7; }
 
     @media (max-width: 480px) {
       article { padding: 32px 16px 64px; }
       h1 { font-size: 28px; }
-      .ingredients li { padding: 5px 14px; }
-      .steps { padding: 16px 18px; }
     }
   </style>
 </head>
@@ -136,7 +54,7 @@
       {%- if info.price and info.quantity %}
       {%- set cost = (ingredient.quantity.value | float) * (info.price | float) / (info.quantity | float) %}
       {%- set total.value = total.value + cost %}
-      <li><span class="name">{{ name }}</span><span class="qty">{{ ingredient.quantity }}</span><span class="cost">EGP {{ cost | round | int }}</span></li>
+      <li><span class="name">{{ name }}{% if info.url %} <a class="link" href="{{ info.url }}" target="_blank">[link]</a>{% endif %}</span><span class="qty">{{ ingredient.quantity }}</span><span class="cost">EGP {{ cost | round | int }}</span></li>
       {%- endif %}
       {%- endfor %}
       {%- for ingredient in ingredients if ingredient.quantity %}
@@ -147,7 +65,7 @@
       {%- endif %}
       {%- endfor %}
       {%- for ingredient in ingredients if not ingredient.quantity %}
-      <li class="no-qty"><span class="name">{{ ingredient.name | title }}</span></li>
+      <li><span class="name">{{ ingredient.name | title }}</span></li>
       {%- endfor %}
       <li class="total"><span class="name">Total</span><span class="cost">EGP {{ total.value | round | int }}</span></li>
     </ul>
