@@ -74,3 +74,24 @@ løk:
     price: 8.50
     quantity: 500
     unit: g
+
+kjøttpålegg:
+    item: Kjøttpålegg
+    url: https://www.carrefouregypt.com/mafegy/en/chicken/lhemy-plain-chcken-lnchon/p/318885
+    price: 68.75
+    quantity: 10
+    unit: skiver
+
+mozzarella:
+    item: Mozzarella
+    url: https://www.carrefouregypt.com/mafegy/en/local-cheese/shreeded-mozzarela/p/420316
+    price: 39.99
+    quantity: 250
+    unit: g
+
+brød:
+    item: Brød
+    url: https://www.carrefouregypt.com/mafegy/en/brown-sliced-bread/richbake-brown-toast-500g/p/38152
+    price: 56.99
+    quantity: 20
+    unit: skiver

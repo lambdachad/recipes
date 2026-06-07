@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#222222">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <title>Eggsandwich</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font: 400 17px/1.7 Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+      color: #222;
+      background: #fff;
+    }
+    article { max-width: 640px; margin: 0 auto; padding: 56px 24px 96px; }
+    header { margin-bottom: 40px; }
+    h1 { font-size: 36px; font-weight: 700; line-height: 1.1; letter-spacing: -0.75px; margin-bottom: 28px; }
+    h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin: 48px 0 16px; }
+    header img { display: block; width: 100%; max-height: 420px; object-fit: cover; border-radius: 10px; }
+    .ingredients { list-style: none; }
+    .ingredients li { display: flex; align-items: baseline; padding: 4px 0; gap: 8px; }
+    .ingredients input[type="checkbox"] { margin: 0; cursor: pointer; }
+    .ingredients li.checked .name,
+    .ingredients li.checked .qty,
+    .ingredients li.checked .cost { opacity: 0.4; text-decoration: line-through; }
+    .name { flex: 1; }
+    .link { font-size: 13px; margin-left: 4px; }
+    .qty, .cost { font-size: 15px; text-align: right; }
+    .qty { min-width: 48px; }
+    .cost { min-width: 80px; }
+    .total { font-weight: 700; margin-top: 4px; padding-top: 8px; border-top: 1px solid #ddd; }
+    .steps { white-space: pre-line; line-height: 1.7; }
+    @media (max-width: 480px) {
+      article { padding: 32px 16px 64px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <a href="index.html">Oppskrifter</a>
+
+    <header>
+      <h1>Eggsandwich</h1>
+      <img src="eggsandwich.jpg" alt="Eggsandwich">
+    </header>
+
+    <h2>Ingredienser</h2>
+    
+    <ul class="ingredients">
+      <li><input type="checkbox"><span class="name">Smør <a class="link" href="https://www.carrefouregypt.com/mafegy/en/mixed-butter/fern-mixed-butter-1k/p/195679" target="_blank">[link]</a></span><span class="qty">35 g</span><span class="cost">EGP 6</span></li>
+      <li><input type="checkbox"><span class="name">Kjøttpålegg <a class="link" href="https://www.carrefouregypt.com/mafegy/en/chicken/lhemy-plain-chcken-lnchon/p/318885" target="_blank">[link]</a></span><span class="qty">4 skiver</span><span class="cost">EGP 28</span></li>
+      <li><input type="checkbox"><span class="name">Egg <a class="link" href="https://www.carrefouregypt.com/mafegy/en/white-eggs/royal-white-eggs-30-pcs/p/659534" target="_blank">[link]</a></span><span class="qty">4</span><span class="cost">EGP 15</span></li>
+      <li><input type="checkbox"><span class="name">Brød <a class="link" href="https://www.carrefouregypt.com/mafegy/en/brown-sliced-bread/richbake-brown-toast-500g/p/38152" target="_blank">[link]</a></span><span class="qty">4 skiver</span><span class="cost">EGP 11</span></li>
+      <li><input type="checkbox"><span class="name">Mozzarella <a class="link" href="https://www.carrefouregypt.com/mafegy/en/local-cheese/shreeded-mozzarela/p/420316" target="_blank">[link]</a></span><span class="qty">50 g</span><span class="cost">EGP 8</span></li>
+      <li><input type="checkbox"><span class="name">Salt</span></li>
+      <li class="total"><span class="name">Totalt</span><span class="cost">EGP 67</span></li>
+    </ul>
+
+    <h2>Fremgangsmåte</h2>
+    <div class="steps">1. Varm opp en panne over middels-høy varme med litt 35 g smør. Stek 4 skiver kjøttpålegg i 1-2 minutter per side til gyllen og sprø. Ta av og sett til side.
+2. Visp 4 egg i en bolle med salt.
+3. Senk varmen til middels. Smelt smør i pannen og hell i eggene.
+4. Smør smør på 4 skiver brød. Når eggene begynner å stivne men er fortsatt litt våte på toppen, legg brødskivene med smørsiden ned i eggene og press lett ned.
+5. Snu hele stykket når eggene er stivnet.
+6. Legg 50 g mozzarella og kjøttpålegg på to av brødskivene. Brett de to andre brødskivene oppå for å lukke sandwichene.
+7. Stek til brødet er gyllent og osten er smeltet, ca. 1 minutt.</div>
+  </article>
+  <script>
+    document.querySelectorAll('.ingredients input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => cb.parentElement.classList.toggle('checked', cb.checked));
+    });
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+  </script>
+</body>
+</html>
