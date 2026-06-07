@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#222222">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
   <title>{{ metadata.title }}</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,7 +70,7 @@
       {%- endif %}
       {%- endfor %}
       {%- for ingredient in ingredients if not ingredient.quantity %}
-      <li><span class="name">{{ ingredient.name | title }}</span></li>
+      <li><input type="checkbox"><span class="name">{{ ingredient.name | title }}</span></li>
       {%- endfor %}
       <li class="total"><span class="name">Total</span><span class="cost">EGP {{ total.value | round | int }}</span></li>
     </ul>
@@ -78,6 +84,7 @@
     document.querySelectorAll('.ingredients input[type="checkbox"]').forEach(cb => {
       cb.addEventListener('change', () => cb.parentElement.classList.toggle('checked', cb.checked));
     });
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
   </script>
 </body>
 </html>

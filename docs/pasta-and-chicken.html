@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#222222">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
   <title>Pasta and Chicken</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,9 +58,9 @@
       <li><input type="checkbox"><span class="name">Potato <a class="link" href="https://www.carrefouregypt.com/mafegy/en/potato/a-potato-for-frying/p/157967" target="_blank">[link]</a></span><span class="qty">500 g</span><span class="cost">EGP 6</span></li>
       <li><input type="checkbox"><span class="name">Oil <a class="link" href="https://www.carrefouregypt.com/mafegy/en/sunflower-oil/afia-sunflower-oil-0-7l/p/644802" target="_blank">[link]</a></span><span class="qty">200 ml</span><span class="cost">EGP 22</span></li>
       <li><input type="checkbox"><span class="name">Cooking Cream <a class="link" href="https://www.carrefouregypt.com/mafegy/en/cooking-cream/juhayna-cooking-cream-500m/p/181147" target="_blank">[link]</a></span><span class="qty">500 ml</span><span class="cost">EGP 144</span></li>
-      <li><span class="name">Chicken Spices</span></li>
-      <li><span class="name">Salt</span></li>
-      <li><span class="name">Garlic Powder</span></li>
+      <li><input type="checkbox"><span class="name">Chicken Spices</span></li>
+      <li><input type="checkbox"><span class="name">Salt</span></li>
+      <li><input type="checkbox"><span class="name">Garlic Powder</span></li>
       <li class="total"><span class="name">Total</span><span class="cost">EGP 321</span></li>
     </ul>
 
@@ -69,6 +75,7 @@
     document.querySelectorAll('.ingredients input[type="checkbox"]').forEach(cb => {
       cb.addEventListener('change', () => cb.parentElement.classList.toggle('checked', cb.checked));
     });
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
   </script>
 </body>
 </html>

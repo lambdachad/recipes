@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#222222">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
   <title>Scrambled Eggs</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -49,7 +55,7 @@
     <ul class="ingredients">
       <li><input type="checkbox"><span class="name">Eggs <a class="link" href="https://www.carrefouregypt.com/mafegy/en/white-eggs/royal-white-eggs-30-pcs/p/659534" target="_blank">[link]</a></span><span class="qty">6</span><span class="cost">EGP 22</span></li>
       <li><input type="checkbox"><span class="name">Butter <a class="link" href="https://www.carrefouregypt.com/mafegy/en/mixed-butter/fern-mixed-butter-1k/p/195679" target="_blank">[link]</a></span><span class="qty">25 g</span><span class="cost">EGP 4</span></li>
-      <li><span class="name">Salt</span></li>
+      <li><input type="checkbox"><span class="name">Salt</span></li>
       <li class="total"><span class="name">Total</span><span class="cost">EGP 26</span></li>
     </ul>
 
@@ -62,6 +68,7 @@
     document.querySelectorAll('.ingredients input[type="checkbox"]').forEach(cb => {
       cb.addEventListener('change', () => cb.parentElement.classList.toggle('checked', cb.checked));
     });
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
   </script>
 </body>
 </html>

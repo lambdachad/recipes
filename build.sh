@@ -3,6 +3,7 @@
 rm -rf docs
 mkdir -p docs
 cp recipes/*.jpg recipes/*.png recipes/*.webp docs/ 2>/dev/null
+cp favicon.svg manifest.json sw.js docs/
 
 # Build {recipe}.html
 for recipe in recipes/*.cook; do
@@ -18,6 +19,12 @@ cat > docs/index.html <<'HEADER'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#222222">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
   <title>Recipes</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,6 +67,7 @@ done
 cat >> docs/index.html <<'FOOTER'
     </div>
   </main>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
 </body>
 </html>
 FOOTER
