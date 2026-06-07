@@ -11,3 +11,24 @@ butter:
     price: 158.99
     quantity: 1000
     unit: g
+
+whole chicken:
+    item: Whole Chicken
+    url: https://www.carrefouregypt.com/mafegy/en/whole-chicken/fyonka-whole-chicken-1000-1100g/p/658409
+    price: 169.99
+    quantity: 1
+    unit: chicken
+
+lemon:
+    item: Lemon
+    url: https://www.carrefouregypt.com/mafegy/en/lemon/a-lemon-balady-net/p/425250
+    price: 47.00
+    quantity: 20
+    unit: lemon
+
+oil:
+    item: Oil
+    url: https://www.carrefouregypt.com/mafegy/en/sunflower-oil/afia-sunflower-oil-0-7l/p/644802
+    price: 77.99
+    quantity: 700
+    unit: ml
