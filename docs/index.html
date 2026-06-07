@@ -1,18 +1,3 @@
-#!/usr/bin/env sh
-
-rm -rf docs
-mkdir -p docs
-cp recipes/*.jpg recipes/*.png recipes/*.webp docs/ 2>/dev/null
-
-# Build {recipe}.html
-for recipe in recipes/*.cook; do
-    name=$(basename "${recipe%.cook}")
-    cook report --template recipe.html.jinja "$recipe" --datastore . > "docs/$name.html" 2>/dev/null
-    echo "$name.html"
-done
-
-# Build index.html
-cat > docs/index.html <<'HEADER'
 <!doctype html>
 <html lang="en">
 <head>
@@ -43,24 +28,11 @@ cat > docs/index.html <<'HEADER'
   <main>
     <h1>Recipes</h1>
     <div class="grid">
-HEADER
-
-for recipe in recipes/*.cook; do
-    name=$(basename "${recipe%.cook}")
-    title=$(sed -n 's/^title: *//p' "$recipe")
-    image=$(sed -n 's/^image: *//p' "$recipe")
-    cat >> docs/index.html <<CARD
-      <a class="card" href="${name}.html">
-        <img src="${image}" alt="${title}">
-        <span>${title}</span>
+      <a class="card" href="scrambled-eggs.html">
+        <img src="scrambled-eggs.jpg" alt="Scrambled Eggs">
+        <span>Scrambled Eggs</span>
       </a>
-CARD
-done
-
-cat >> docs/index.html <<'FOOTER'
     </div>
   </main>
 </body>
 </html>
-FOOTER
-echo "index.html"
