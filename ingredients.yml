@@ -60,3 +60,17 @@ cooking cream:
     price: 143.99
     quantity: 500
     unit: ml
+
+carrot:
+    item: Carrot
+    url: https://www.carrefouregypt.com/mafegy/en/carrot/carrot-500gr/p/423292
+    price: 20.99
+    quantity: 500
+    unit: g
+
+onion:
+    item: Onion
+    url: https://www.carrefouregypt.com/mafegy/en/onions/a-onion-white/p/32763
+    price: 8.50
+    quantity: 500
+    unit: g
