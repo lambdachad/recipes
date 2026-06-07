@@ -32,3 +32,31 @@ oil:
     price: 77.99
     quantity: 700
     unit: ml
+
+pasta:
+    item: Penne Pasta
+    url: https://www.carrefouregypt.com/mafegy/en/short-cut-pasta/royal-pasta-penne-1k/p/469062
+    price: 33.99
+    quantity: 1000
+    unit: g
+
+chicken breast:
+    item: Chicken Breast
+    url: https://www.carrefouregypt.com/mafegy/en/poultry-offals/chicken-breast-fillet-kg/p/31776
+    price: 131.00
+    quantity: 500
+    unit: g
+
+potatoes:
+    item: Potato
+    url: https://www.carrefouregypt.com/mafegy/en/potato/a-potato-for-frying/p/157967
+    price: 6.25
+    quantity: 500
+    unit: g
+
+cooking cream:
+    item: Cooking Cream
+    url: https://www.carrefouregypt.com/mafegy/en/cooking-cream/juhayna-cooking-cream-500m/p/181147
+    price: 143.99
+    quantity: 500
+    unit: ml

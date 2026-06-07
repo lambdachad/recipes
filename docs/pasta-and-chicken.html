@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pasta and Chicken</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font: 400 17px/1.7 Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+      color: #222;
+      background: #fff;
+    }
+    article { max-width: 640px; margin: 0 auto; padding: 56px 24px 96px; }
+    header { margin-bottom: 40px; }
+    h1 { font-size: 36px; font-weight: 700; line-height: 1.1; letter-spacing: -0.75px; margin-bottom: 28px; }
+    h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin: 48px 0 16px; }
+    header img { display: block; width: 100%; max-height: 420px; object-fit: cover; border-radius: 10px; }
+    .ingredients { list-style: none; }
+    .ingredients li { display: flex; align-items: baseline; padding: 4px 0; gap: 8px; }
+    .name { flex: 1; }
+    .link { font-size: 13px; margin-left: 4px; }
+    .qty, .cost { font-size: 15px; text-align: right; }
+    .qty { min-width: 48px; }
+    .cost { min-width: 80px; }
+    .total { font-weight: 700; margin-top: 4px; padding-top: 8px; border-top: 1px solid #ddd; }
+    .steps { white-space: pre-line; line-height: 1.7; }
+    @media (max-width: 480px) {
+      article { padding: 32px 16px 64px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <a href="index.html">Recipes</a>
+
+    <header>
+      <h1>Pasta and Chicken</h1>
+      <img src="pasta-and-chicken.jpg" alt="Pasta and Chicken">
+    </header>
+
+    <h2>Ingredients</h2>
+    
+    <ul class="ingredients">
+      <li><span class="name">Penne Pasta <a class="link" href="https://www.carrefouregypt.com/mafegy/en/short-cut-pasta/royal-pasta-penne-1k/p/469062" target="_blank">[link]</a></span><span class="qty">500 g</span><span class="cost">EGP 17</span></li>
+      <li><span class="name">Chicken Breast <a class="link" href="https://www.carrefouregypt.com/mafegy/en/poultry-offals/chicken-breast-fillet-kg/p/31776" target="_blank">[link]</a></span><span class="qty">500 g</span><span class="cost">EGP 131</span></li>
+      <li><span class="name">Potato <a class="link" href="https://www.carrefouregypt.com/mafegy/en/potato/a-potato-for-frying/p/157967" target="_blank">[link]</a></span><span class="qty">500 g</span><span class="cost">EGP 6</span></li>
+      <li><span class="name">Oil <a class="link" href="https://www.carrefouregypt.com/mafegy/en/sunflower-oil/afia-sunflower-oil-0-7l/p/644802" target="_blank">[link]</a></span><span class="qty">200 ml</span><span class="cost">EGP 22</span></li>
+      <li><span class="name">Cooking Cream <a class="link" href="https://www.carrefouregypt.com/mafegy/en/cooking-cream/juhayna-cooking-cream-500m/p/181147" target="_blank">[link]</a></span><span class="qty">500 ml</span><span class="cost">EGP 144</span></li>
+      <li><span class="name">Chicken Spices</span></li>
+      <li><span class="name">Salt</span></li>
+      <li><span class="name">Garlic Powder</span></li>
+      <li class="total"><span class="name">Total</span><span class="cost">EGP 321</span></li>
+    </ul>
+
+    <h2>Steps</h2>
+    <div class="steps">1. Cook 500 g pasta until al dente, then drain.
+2. Cut 500 g chicken breast into dices. Cook in a pan with chicken spices, salt, and garlic powder until golden and cooked through.
+3. Peel and cube 500 g potatoes. Fry in 200 ml oil until golden and crispy.
+4. Add 500 ml cooking cream to the chicken, stir, and let it simmer for a few minutes.
+5. Add the potatoes and pasta, toss everything together, and serve.</div>
+  </article>
+</body>
+</html>
